@@ -12,7 +12,7 @@ class User(AbstractUser):
         return User.objects.filter(followers=self).count()
 
 
-class Post(models.Model):
+class Tweet(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     addedOn = models.DateTimeField(auto_now_add=True)
@@ -23,4 +23,4 @@ class Post(models.Model):
         return self.liked_by.count()
 
     class Meta:
-        ordering = ['-addedOn']
+        ordering = ['-addedOn'] # reverse the ordering of list
